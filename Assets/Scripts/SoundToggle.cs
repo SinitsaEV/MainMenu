@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
+[RequireComponent(typeof(Toggle))]
 public class SoundToggle : MonoBehaviour
 {
     [SerializeField] private AudioMixerGroup _audioMixerGroup;
@@ -18,6 +19,12 @@ public class SoundToggle : MonoBehaviour
         _toggle = GetComponent<Toggle>();
         _toggle.onValueChanged.AddListener(ToggleMusic);
     }
+
+    private void OnDestroy()
+    {
+        _toggle.onValueChanged.RemoveListener(ToggleMusic);
+    }
+
     public void ToggleMusic(bool isDisabled)
     {
         if (isDisabled)

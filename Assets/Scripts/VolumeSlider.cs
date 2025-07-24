@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
+[RequireComponent(typeof(Slider))]
 public class VolumeSlider : MonoBehaviour
 {
     [SerializeField] private AudioMixerGroup _audioMixerGroup;
@@ -20,8 +21,7 @@ public class VolumeSlider : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_slider != null)
-            _slider.onValueChanged.RemoveListener(ChangeVolume);        
+        _slider.onValueChanged.RemoveListener(ChangeVolume);
     }
 
     public void ChangeVolume(float volume)

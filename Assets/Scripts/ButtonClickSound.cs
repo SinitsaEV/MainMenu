@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Button))]
 public class ButtonClickSound : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
@@ -15,8 +16,7 @@ public class ButtonClickSound : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_button != null)
-            _button.onClick.RemoveListener(OnClick);
+        _button.onClick.RemoveListener(OnClick);
     }
 
     public void OnClick()
